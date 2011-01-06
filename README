@@ -1,0 +1,5 @@
+Graphical User Interface
+========================
+The GUI for this program is written in GTK.  This works nicely on Linux, but
+it may not be compatible with closed operating systems.  In the event that
+this becomes a problem, the GUI will most likely be ported to Tk.  
