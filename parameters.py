@@ -17,7 +17,8 @@ class Parameter:
         self.lowest = lowest
         self.highest = highest
 
-        if default is None: self.default = int(lowest + highest) // 2
+	#ksk following cast to integer in original code
+        if default is None: self.default = (lowest + highest) / 2
         else:               self.default = default
 
         self.adjustment = None
@@ -38,7 +39,7 @@ class Parameter:
         scale.set_digits(3)
 
         value = gtk.Label()
-        value.set_size_request(40, 17)
+        value.set_size_request(60, 17)
         value.set_alignment(0, 0.5)
 
         self.adjustment.connect("value_changed", callback)
@@ -56,7 +57,8 @@ class Parameter:
         To have more control over how that value is formatted, create a
         subclass and overwrite this method. """
 
-        label = self.format % adjustment.get_value()
+        #ksk: this seems broken: label = self.format % adjustment.get_value()
+        label = '%0.2g' % adjustment.get_value()
         value.set_label(label)
 
 class PercentParameter(Parameter):

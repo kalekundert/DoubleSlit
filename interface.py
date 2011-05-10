@@ -16,9 +16,10 @@ class Interface:
         self.display = None
         self.simulation = None
 
-        self.amplitude = None
-        self.frequency = None
-        self.displacement = None
+        self.width= None
+        self.distance= None
+        self.mass= None
+	self.velocity= None
 
     def setup(self, display, controls, simulation):
         self.display = display
@@ -123,12 +124,12 @@ class Display:
         # The tick labels are formatted using LaTeX.  This makes it possible
         # to use symbols like pi.
         axes.set_xticks((-pi, 0, pi))
-        axes.set_xticklabels((r"$-\pi$", "$0$", r"$\pi$"))
+        axes.set_xticklabels((r"-pi", "0", r"pi"))
         axes.set_xlim(-pi - 0.25, pi + 0.25)
 
-        axes.set_yticks((-1, 0, 1))
-        axes.set_yticklabels((r"$-1$", "$0$", r"$1$"))
-        axes.set_ylim((-1.1, 1.1))
+        axes.set_yticks((0, 1))
+        axes.set_yticklabels(("0", "1"))
+        axes.set_ylim((-0.1, 1.1))
 
         layout.pack_start(self.canvas)
 
