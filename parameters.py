@@ -6,10 +6,12 @@ class Parameter:
     subclass this class in order to control how the value of the parameter is
     formatted. """
 
-    def __init__(self, title, lowest, highest, default=None):
+    def __init__(self, title, lowest, highest, default=None, format='%0.2g'):
         """ The constructor initializes the parameter object with the
         information that is passed in.  If a default value isn't given, it is
         taken to be the average of the lowest and highest values. """
+
+        assert highest > lowest
 
         self.title = title
         self.format = format
@@ -17,7 +19,6 @@ class Parameter:
         self.lowest = lowest
         self.highest = highest
 
-	#ksk following cast to integer in original code
         if default is None: self.default = (lowest + highest) / 2
         else:               self.default = default
 
@@ -58,7 +59,7 @@ class Parameter:
         subclass and overwrite this method. """
 
         #ksk: this seems broken: label = self.format % adjustment.get_value()
-        label = '%0.2g' % adjustment.get_value()
+        label = self.format % adjustment.get_value()
         value.set_label(label)
 
 class PercentParameter(Parameter):
