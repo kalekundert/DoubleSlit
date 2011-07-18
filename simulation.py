@@ -13,9 +13,10 @@ class Simulation:
         using this reference should never be necessary. """
 
         self.width= 0
-        self.distance= 0
-        self.mass= 0
-	self.velocity= 0
+        self.space= 0
+        self.momentum= 0
+	self.distanceSource= 0
+	self.distanceObs= 0
 
     def update(self, parameters):
         """ This method is called by the interface whenever a parameter is
@@ -24,9 +25,10 @@ class Simulation:
         that the next call to plot() will produce the correct result. """
 
         self.width = parameters[0]
-        self.distance = parameters[1]
-        self.mass = parameters[2]
-	self.velocity = parameters[3]
+        self.space = parameters[1]
+        self.momentum = parameters[2]
+	self.distanceSource = parameters[3]
+	self.distanceObs= parameters[4]
 
     def plot(self, independent):
         """ This method is called by the graphical interface whenever the
@@ -36,11 +38,11 @@ class Simulation:
 
         x = independent
 	a = self.width
-	b = self.distance
+	b = self.space
 	inot = 1
 	h = 6.62606896e-34
 	hbar = h / (2 * pi)
-	k = self.mass * self.velocity / hbar
+	k = self.momentum / hbar
 	angle = 0 
 	u = (a * k / 2) * (sin(angle) + x)	
 	v = (b / a) * u
