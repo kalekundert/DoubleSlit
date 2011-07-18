@@ -58,7 +58,6 @@ class Parameter:
         To have more control over how that value is formatted, create a
         subclass and overwrite this method. """
 
-        #ksk: this seems broken: label = self.format % adjustment.get_value()
         label = self.format % adjustment.get_value()
         value.set_label(label)
 
