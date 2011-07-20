@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import division
 from numpy import *
 import scipy
 from scipy.special import fresnel
@@ -38,19 +39,6 @@ class Simulation:
         variable (i.e. x) and it is expected to return the corresponding
         dependent variable (i.e. y). """
 
-        #x = independent
-	#a = self.width
-	#b = self.space
-	#inot = 1
-	#h = 6.62606896e-34
-	#hbar = h / (2 * pi)
-	#k = self.momentum / hbar
-	#angle = 0 
-	#u = (a * k / 2) * (sin(angle) + x)	
-	#v = (b / a) * u
-	
-	#return inot * (sin(u) / u)**2 * (cos(v)**2)
-
 	h = 6.62606896e-34
         wavelen = h / self.momentum
         x = independent
@@ -73,8 +61,6 @@ class Simulation:
         (ssab2, ccab2) = scipy.special.fresnel(ubottom2)
         (ssab1, ccab1) = scipy.special.fresnel(ubottom1)
 
-        print ssat1
-        print ssat2
         fsin1 = ssat1 - ssat2
         fcos1 = ccat1 - ccat2
         fint1 = fcos1 + (fsin1*1j)

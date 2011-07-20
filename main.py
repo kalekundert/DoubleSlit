@@ -24,13 +24,9 @@ if __name__ == "__main__":
     # ...and add a set of slider controls to it.
     electronMass= 9.10938188e-31 # Kg
     c = 299792458
-    #width= Parameter("Width of Slits", 0, 1e-12, 0.5e-12)
-    #distance= Parameter("Distance Between Slits", 0, 10e-12, 5e-12)
-    width= Parameter("Width of Slits", 1e-25, 1e-18)
-    space= Parameter("Distance Between Slits", 1e-20, 1e-15)
-    #mass = Parameter("Particle Mass", 0.01*electronMass, 10*electronMass, electronMass)
-    #velocity= Parameter("Velocity of the Particle", 0, c, 0.9*c)
-    momentum = Parameter("Momentum of Particle", 0.01*c*electronMass, c*10*electronMass, 0.9*c*electronMass)	
+    width= Parameter("Width of Slits", 1e-8, 1)
+    space= Parameter("Distance Between Slits", 1e-6, 1)
+    momentum = Parameter("Momentum of Particle", 0.01*c*electronMass, c*1000*electronMass, 9*c*electronMass)	
     distanceSource = Parameter("Distance from Source to Aperture", 1, 1000, 200)
     distanceObs = Parameter("Distance from Aperture to Observation Screen", 1, 1000, 200)
 

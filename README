@@ -4,6 +4,12 @@ The GUI for this program is written in GTK.  This works nicely on Linux, but
 it may not be compatible with closed operating systems.  In the event that
 this becomes a problem, the GUI will most likely be ported to Tk.  
 
-This is KAra's Contribution
-===========================
-I can't spell Kara.
+Simulation
+==========
+This simulation is intended to be used to demonstrate the effects of Fresnel
+diffraction in the double-slit experiment. By changing the parameters using
+the user controls in the GUI, the user can see the change from quantum to
+classical effects.
+
+To run the program, type this command into the terminal:
+python main.py
