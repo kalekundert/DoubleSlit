@@ -12,45 +12,45 @@ class Interface:
         """ Initializes most of the attributes to null pointers.  Further
         setup is performed in the setup() method. """
 
-        self.controls = None
-        self.display = None
-        self.simulation = None
+	self.controls = None
+	self.display = None
+	self.simulation = None
 
-        self.width= None
-        self.distance= None
-        self.mass= None
+	self.width= None
+	self.distance= None
+	self.mass= None
 	self.velocity= None
 
     def setup(self, display, controls, simulation):
-        self.display = display
-        self.controls = controls
-        self.simulation = simulation
+	self.display = display
+	self.controls = controls
+	self.simulation = simulation
 
-        window = gtk.Window()
-        window.set_default_size(500, 500)
-        window.set_title("Double Slit Simulator")
+	window = gtk.Window()
+	window.set_default_size(500, 500)
+	window.set_title("Double Slit Simulator")
 
-        window.connect("show", self.update)
-        window.connect("destroy", self.close)
+	window.connect("show", self.update)
+	window.connect("destroy", self.close)
 
-        layout = gtk.VBox(False)
-        window.add(layout)
+	layout = gtk.VBox(False)
+	window.add(layout)
 
-        display.setup(layout)
-        controls.setup(layout)
+	display.setup(layout)
+	controls.setup(layout)
 
-        window.show_all()
+	window.show_all()
 
     def start(self):
-        gtk.main()
+	gtk.main()
 
     def update(self, *ignore):
-        values = self.controls.values()
-        self.simulation.update(values)
-        self.display.update()
+	values = self.controls.values()
+	self.simulation.update(values)
+	self.display.update()
 
     def close(self, *args):
-        gtk.main_quit()
+	gtk.main_quit()
 
 class Controls:
     """ This class is responsible for controls on the bottom part of the
@@ -59,32 +59,32 @@ class Controls:
     the new values of the controls. """
 
     def __init__(self, main):
-        self.main = main
-        self.parameters = []
-        self.frame = self.table = None
+	self.main = main
+	self.parameters = []
+	self.frame = self.table = None
 
     def add(self, *parameters):
-        self.parameters.extend(parameters)
+	self.parameters.extend(parameters)
 
     def setup(self, layout):
-        frame = gtk.Frame("Physical Properties")
-        frame.set_border_width(10)
+	frame = gtk.Frame("Physical Properties")
+	frame.set_border_width(10)
 
-        layout.pack_start(frame, expand=False)
+	layout.pack_start(frame, expand=False)
 
-        table = gtk.Table(len(self.parameters), 3)
-        table.set_border_width(5)
-        table.set_col_spacings(10)
+	table = gtk.Table(len(self.parameters), 3)
+	table.set_border_width(5)
+	table.set_col_spacings(10)
 
-        frame.add(table)
+	frame.add(table)
 
-        callback = self.main.update
-        enumeration = enumerate(self.parameters)
-        for row, parameter in enumeration:
+	callback = self.main.update
+	enumeration = enumerate(self.parameters)
+	for row, parameter in enumeration:
             parameter.setup(table, row, callback)
 
     def values(self):
-        return [parameter.adjustment.get_value()
+	return [parameter.adjustment.get_value()
                 for parameter in self.parameters]
 
 class Display:
